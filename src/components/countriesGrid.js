@@ -37,7 +37,7 @@ export default function Countries({countries}) {
         <GridContainer>
             {
                 countries.map(country => (
-                        <div className={'grid-item'}>
+                        <div key={country.cca3} className={'grid-item'}>
 
                         </div>
 
