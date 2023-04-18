@@ -36,6 +36,10 @@ const CardDetails = styled.div`
    margin-top: 10px;
 `;
 
+const DetailBold = styled.b`
+   font-weight: 600;
+`;
+
 export default function CountryCard(props) {
    
 
@@ -49,13 +53,13 @@ export default function CountryCard(props) {
             <CardTitle>{props.countryName}</CardTitle>
             <CardDetails>
             <span>
-               <b>Population: </b>{props.population.toLocaleString()}<br/>  
+               <DetailBold>Population: </DetailBold> {props.population.toLocaleString()}<br/>  
             </span>
             <span>
-               <b>Region: </b>{props.region}<br/>  
+               <DetailBold>Region: </DetailBold>{props.region}<br/>  
             </span>
             <span>
-               <b>Capital: </b>{props.capital}
+               <DetailBold>Capital: </DetailBold>{props.capital}
             </span>
             </CardDetails>
             </CardBody>
