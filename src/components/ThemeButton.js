@@ -12,20 +12,16 @@ font-size: 1rem;
 align-items: center;
 `;
 
-
 const StyledIcon = styled(FaRegMoon)`
 padding-right: 5px;
 font-size: 18px;
 `;
 export default function ThemeButton() {
-  
-const HandleChangeMode = () => {
-    
-}
+  const HandleChangeMode = () => { }
   return (
     <StyledThemeButton onClick={HandleChangeMode}>
-        <StyledIcon/>
-        Dark Mode      
+      <StyledIcon />
+      Dark Mode
     </StyledThemeButton>
   );
 }

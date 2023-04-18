@@ -24,9 +24,9 @@ font-weight:800;
 
 export default function HeaderComponent() {
   return (
-   <Header>
+    <Header>
       <HeaderText>Where in the world?</HeaderText>
-      <ThemeButton/>
-   </Header>
+      <ThemeButton />
+    </Header>
   );
 }
