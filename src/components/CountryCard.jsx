@@ -5,26 +5,36 @@ import styled from 'styled-components';
 const CardContainer = styled.div`
     border-radius: 4px;
     background-color: white;
-    box-shadow: 1px 1px 1px 1px rgba(1,1,1,0.04); 
+    box-shadow: 0 2px 20px rgba(1,1,1,0.04); 
     width:250px;
-    height:300px;
+    height:320px;
 `;
 
-const CardDetails = styled.div`
+const CardBody = styled.div`
     display: block;
-    margin-left: 5px;
     line-height: 1.5;
+    margin-inline: 20px;
+    margin-block: 15px;
 `;
 
 const CardImage = styled.img`
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
-width: 100%;
-min-width: 100px;
-min-height: 100px;
-object-fit: cover;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   width: 100%;
+   min-width: 100px;
+   min-height: 100px;
+   object-fit: cover;
 `;
 
+const CardTitle = styled.h3`
+   margin: 0;
+   font-size: 20px;
+`;
+
+const CardDetails = styled.div`
+   font-size: 16px;
+   margin-top: 10px;
+`;
 
 export default function CountryCard(props) {
    
@@ -34,7 +44,9 @@ export default function CountryCard(props) {
         
           <CardContainer height={props.cardHeight} width={props.cardWidth}>
             <CardImage alt={props.countryName} src={props.imgSrc} height={props.imgHeight}/>
-            <h2>{props.countryName}</h2>
+            <CardBody>
+
+            <CardTitle>{props.countryName}</CardTitle>
             <CardDetails>
             <span>
                <b>Population: </b>{props.population.toLocaleString()}<br/>  
@@ -46,6 +58,7 @@ export default function CountryCard(props) {
                <b>Capital: </b>{props.capital}
             </span>
             </CardDetails>
+            </CardBody>
           </CardContainer>
         
 
