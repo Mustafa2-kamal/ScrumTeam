@@ -29,7 +29,7 @@ export default function DropMenu({ options, filterValue, setFilterValue }) {
             <StyledDropDown onChange={handleFilterSelect} value={filterValue}>
                 {
                     options.map((option) => {
-                        return <option value={option}>{option}</option>
+                        return <option key={option} value={option}>{option}</option>
 
                     })
                 }
