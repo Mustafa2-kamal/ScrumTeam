@@ -26,8 +26,21 @@ color: #111517;
 `;
 
 export default function FavouritesSection({ favourites }) {
+
+    const handleDragOver = (event)=>{
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    const handleDrop = (event)=>{
+        event.preventDefault();
+        sendDroppedToMain(event.dataTransfer.getData('text/plain'))
+    }
+
+
+
     return (
-        <FavoratesListDiv>
+        <FavoratesListDiv onDragOver={handleDragOver} onDrop ={handleDrop.bind(this)}>
             <ListTitle> Favourites </ListTitle>
             {favourites.map
                 (
