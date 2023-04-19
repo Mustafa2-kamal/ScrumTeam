@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-
+//styling card main
 const CardContainer = styled.div`
     border-radius: 4px;
     background-color: white;
@@ -10,6 +10,7 @@ const CardContainer = styled.div`
     height:320px;
 `;
 
+//styling text of card
 const CardBody = styled.div`
     display: block;
     line-height: 1.5;
@@ -17,6 +18,7 @@ const CardBody = styled.div`
     margin-block: 15px;
 `;
 
+//styling the image of the card
 const CardImage = styled.img`
    border-top-left-radius: 4px;
    border-top-right-radius: 4px;
@@ -26,16 +28,19 @@ const CardImage = styled.img`
    object-fit: cover;
 `;
 
+//styling the title of the card
 const CardTitle = styled.h3`
    margin: 0;
    font-size: 20px;
 `;
 
+//styling other card details
 const CardDetails = styled.div`
    font-size: 16px;
    margin-top: 10px;
 `;
 
+//font-weight styling
 const DetailBold = styled.b`
    font-weight: 600;
 `;
