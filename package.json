@@ -1,6 +1,12 @@
 {
+<<<<<<< HEAD
   "name": "my-app",
   "version": "0.1.0",
+=======
+  "name": "scrum-task",
+  "version": "0.1.0",
+  "homepage": "https://Mustafa2-kamal.github.io/ScrumTeam",
+>>>>>>> f7636f6549dce7e888b5944ef912fe7de9fd247a
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -13,6 +19,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+<<<<<<< HEAD
+=======
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+>>>>>>> f7636f6549dce7e888b5944ef912fe7de9fd247a
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+=======
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+>>>>>>> f7636f6549dce7e888b5944ef912fe7de9fd247a
   }
 }
