@@ -51,7 +51,7 @@ export default function CountryCard(props) {
 
      return (
         
-          <CardContainer height={props.cardHeight} width={props.cardWidth}>
+          <CardContainer  height={props.cardHeight} width={props.cardWidth} draggable onDragStart={event => { event.dataTransfer.setData("text/plain", props.id) }}>
             <CardImage alt={props.countryName} src={props.imgSrc} height={props.imgHeight}/>
             <CardBody>
 
