@@ -47,6 +47,7 @@ export default function Countries({ countries }) {
               population={country.population}
               region={country.region}
               capital= {country.capital}
+                         code={country.cca2}
               />
           </div>
         )

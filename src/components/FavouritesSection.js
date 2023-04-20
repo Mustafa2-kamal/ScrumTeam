@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
+import {useDrop} from "react-dnd";
+
 import FavouriteCountry from './FavouriteCountry';
+import {addFav} from "../utils/favorites";
 
 const FavoratesListDiv = styled.div`
 background-color: #ffffff;
@@ -25,10 +28,23 @@ font-weight: 800;
 color: #111517;
 `;
 
-export default function FavouritesSection({ favourites }) {
+export default function FavouritesSection({ favCodes,favourites ,setFavCountries }) {
+    function onDrop(countryCode) {
+        setFavCountries(addFav(favCodes, countryCode));
+    }
+    const [{isOver}, drop] = useDrop({
+        accept: 'countryCard',
+        drop: (item) => onDrop(item.id),
+        collect: (monitor) => ({
+            isOver: monitor.isOver(),
+
+        }),
+    });
+
+    const borderStyle = isOver ? '2px #27ae60 dashed' : 'none';
     return (
         <span>
-            <FavoratesListDiv>
+            <FavoratesListDiv ref={drop} style={{border: borderStyle}}>
             <ListTitle> Favourites </ListTitle>
             {favourites.map
                 (
