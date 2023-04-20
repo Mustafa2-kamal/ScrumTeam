@@ -7,8 +7,8 @@ import FavouritesSection from '../components/FavouritesSection';
 import { loadCountries } from '../utils/Api_Functions';
 import { filterCountries } from '../utils/countries';
 import useDebounce from '../hooks/useDebounceHook';
-import {getFromLocalStorage} from "../utils/localStorage";
-import {FAV_KEY} from "../utils/constants";
+import { getFromLocalStorage, setInLocalStorage } from "../utils/localStorage";
+import { FAV_KEY } from "../utils/constants";
 
 const ParentDiv = styled.div`
 height: 100%;
@@ -32,20 +32,20 @@ margin-right: 2rem;
 `;
 
 const StyledMainBody = styled.div`
-    padding-top: 50px;
+    padding-top: 30px;
     @media screen and (max-width: 599px){
         padding-left: 3rem;
         padding-right: 3rem;
     }
     width: 100%;
+    height: 100%;
     display: flex;
 `;
 
-const GridContainer = styled.div`
+const GridContainer = styled.span`
 display: flex;
-height: 100%;
 overflow: hidden;
-
+width:100%;
 .grid-item-9 {
     padding: 1.5rem;
     width: 80%;
@@ -97,8 +97,12 @@ function HomePage() {
     const [searchValue, setSearchValue] = useState(' ');
     const debouncedSearchTerm = useDebounce(searchValue, 250);
     const [favCode, setFavCode] = useState(getFromLocalStorage(FAV_KEY) || []);
+    const [allCountries, setAllCountries] = useState([]);
 
     async function fetchCountries(searchTerm) {
+        if(allCountries.length === 0){
+            setAllCountries(await loadCountries(searchTerm));
+        }
         setCountries(await loadCountries(searchTerm));
     }
 
@@ -107,21 +111,25 @@ function HomePage() {
     }, []);
 
     useEffect(() => {
-        setFilteredCountries(filterCountries(countries, selectedRegion, []));
-    }, [selectedRegion, countries]);
+        setFilteredCountries(filterCountries(countries, selectedRegion, favCode));
+    }, [selectedRegion, countries, favCode]);
 
     useEffect(() => {
-    if (debouncedSearchTerm || debouncedSearchTerm === ' ') {
-      fetchCountries(searchValue);
-    }
-  }, [debouncedSearchTerm, searchValue]);
+        if (debouncedSearchTerm || debouncedSearchTerm === ' ') {
+            fetchCountries(searchValue);
+        }
+    }, [debouncedSearchTerm, searchValue]);
+
+    useEffect(() => {
+        setInLocalStorage(FAV_KEY, favCode);
+    }, [favCode]);
 
     return (
         <ParentDiv>
             <StyledMainLine>
-                <InputField placeholderText='Search for a country ...' searchValue={searchValue}
+                <InputField placeholderText='Search for a country ...'
                     onSearch={
-                        async (searchTerm) => {
+                        (searchTerm) => {
                             setSearchValue(searchTerm);
                         }
                     }
@@ -134,8 +142,8 @@ function HomePage() {
             </StyledMainLine>
             <StyledMainBody>
                 <GridContainer>
-                    <FavouritesSection favCodes={favCode} favourites={[]} setFavCountries={setFavCode} className={'grid-item-3'} />
-                    <Countries countries={filteredCountries} className={'ggrid-item-9'} />
+                    <FavouritesSection countries= {allCountries} favCodes={favCode} setFavCountries={setFavCode} className={'grid-item-3'} />
+                    <Countries countries={filteredCountries} favCodes={favCode} setFavCountries={setFavCode} className={'grid-item-9'} />
                 </GridContainer>
             </StyledMainBody>
         </ParentDiv>

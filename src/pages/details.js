@@ -5,7 +5,7 @@ function DetailsPage() {
         <>
             <h1>Inside Details Page</h1>
         </>
-    );
+    ); 
 }
 
 export default DetailsPage;

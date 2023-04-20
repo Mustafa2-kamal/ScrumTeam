@@ -11,4 +11,4 @@ export function addFav(favoritesCode, countryCode) {
         favArray.push(countryCode);
     }
     return favArray;
-}
+} 

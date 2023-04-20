@@ -18,7 +18,7 @@ const GridContainer = styled.div`
       width: 50% - 1.5rem;
     }
   }
-
+ 
   @media screen and (max-width: 576px) {
     .grid-item {
       width: 100%;
@@ -26,7 +26,7 @@ const GridContainer = styled.div`
   }
 `;
 
-export default function Countries({ countries }) {
+export default function Countries({ countries, favCodes, setFavCountries }) {
   if (countries.length === 0) {
     return (
       <GridContainer>
@@ -41,14 +41,11 @@ export default function Countries({ countries }) {
           <div key={country.cca3} className={'grid-item'}>
             <CountryCard cardHeight={'80vh'}
               cardWidth={'100%'}
-              countryName={country.name.common}
-              imgSrc={country.flags.svg}
+              country={country}
               imgHeight={'144px'}
-              population={country.population}
-              region={country.region}
-              capital= {country.capital}
-                         code={country.cca2}
-              />
+              favCodes={favCodes}
+              setFavCountries={setFavCountries}
+            />
           </div>
         )
         )

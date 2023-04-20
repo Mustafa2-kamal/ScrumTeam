@@ -11,7 +11,7 @@ font-weight: 800;
 font-size: 1rem;
 align-items: center;
 `;
-
+ 
 const StyledIcon = styled(FaRegMoon)`
 padding-right: 5px;
 font-size: 18px;

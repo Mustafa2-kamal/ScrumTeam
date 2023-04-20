@@ -43,18 +43,25 @@ const CancelButton = styled("button")`
   cursor: pointer;
   font-weight: 800;
 `;
-export default function FavouriteCountry({ country }) {
-
+export default function FavouriteCountry({ countries, countryCode, removeFavCountry }) {
+ 
+    const favCountry = countries.find(country => country.cca2 === countryCode);
     const handleRemoveFavorite = (event) => {
-
+        removeFavCountry(countryCode);
     };
-    return (
-        <HorizontialCard>
-            <CardBody>
-                <CardImage src={country.flags.svg} />
-                <CardTitle>{country.name.common}</CardTitle>
-            </CardBody>
-            <CancelButton onClick={() => handleRemoveFavorite(country.cca2)}>x</CancelButton>
-        </HorizontialCard>
-    );
+    if (favCountry) {
+        return (
+            <HorizontialCard>
+                <CardBody>
+                    <CardImage src={favCountry.flags.svg} />
+                    <CardTitle>{favCountry.name.common}</CardTitle>
+                </CardBody>
+                <CancelButton onClick={() => handleRemoveFavorite()}>x</CancelButton>
+            </HorizontialCard>
+        );
+    }
+    else return (
+        <div></div>
+    )
+
 }
