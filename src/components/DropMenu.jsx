@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 const StyledDropDown = styled.select`
     width: 100%;
-    padding: 15px ;
+    @media screen and (max-width: 889px) {
+        width: 200px
+    }
+    padding: 15px;
     border: none;
     border-radius: 5px;
     font-size: 15px;

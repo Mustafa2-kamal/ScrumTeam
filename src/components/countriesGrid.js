@@ -26,12 +26,12 @@ const GridContainer = styled.div`
   }
 `;
 
-export default function Countries({ countries }) {
+export default function Countries({ countries, favCodes, setFavCountries }) {
   if (countries.length === 0) {
     return (
-      <GridContainer>
-        <h5 className={'grid-item'}>Result Not Found</h5>
-      </GridContainer>
+        <GridContainer>
+          <h5 className={'grid-item'}>Result Not Found</h5>
+        </GridContainer>
     );
   }
   else return (
@@ -41,13 +41,10 @@ export default function Countries({ countries }) {
           <div key={country.cca3} className={'grid-item'}>
             <CountryCard cardHeight={'80vh'}
               cardWidth={'100%'}
-              countryName={country.name.common}
-              imgSrc={country.flags.svg}
+              country={country}
               imgHeight={'144px'}
-              population={country.population}
-              region={country.region}
-              capital= {country.capital}
-                         code={country.cca2}
+              favCodes={favCodes}
+              setFavCountries={setFavCountries}
               />
           </div>
         )

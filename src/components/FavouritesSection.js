@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
-import {useDrop} from "react-dnd";
+import { useDrop } from "react-dnd";
 
 import FavouriteCountry from './FavouriteCountry';
-import {addFav} from "../utils/favorites";
+import { addFav, removeFav } from "../utils/favorites";
 
 const FavoratesListDiv = styled.div`
 background-color: #ffffff;
@@ -28,11 +28,11 @@ font-weight: 800;
 color: #111517;
 `;
 
-export default function FavouritesSection({ favCodes,favourites ,setFavCountries }) {
+export default function FavouritesSection({ countries, favCodes, setFavCountries }) {
     function onDrop(countryCode) {
         setFavCountries(addFav(favCodes, countryCode));
     }
-    const [{isOver}, drop] = useDrop({
+    const [{ isOver }, drop] = useDrop({
         accept: 'countryCard',
         drop: (item) => onDrop(item.id),
         collect: (monitor) => ({
@@ -44,16 +44,24 @@ export default function FavouritesSection({ favCodes,favourites ,setFavCountries
     const borderStyle = isOver ? '2px #27ae60 dashed' : 'none';
     return (
         <span>
-            <FavoratesListDiv ref={drop} style={{border: borderStyle}}>
-            <ListTitle> Favourites </ListTitle>
-            {favourites.map
-                (
-                    favCountry =>
-                        <span key={favCountry.cca2}>
-                            <FavouriteCountry country={favCountry}/>
-                        </span>
-                )}
-        </FavoratesListDiv>
+            <FavoratesListDiv ref={drop} style={{ border: borderStyle }}>
+                <ListTitle> Favourites </ListTitle>
+                {favCodes.map
+                    (
+                        favCountry =>
+                            <span key={favCountry}>
+                                <FavouriteCountry
+                                    countries={countries}
+                                    countryCode={favCountry}
+                                    removeFavCountry={
+                                        (countryCode) => {
+                                            setFavCountries(removeFav(favCodes, countryCode));
+                                        }
+                                    }
+                                />
+                            </span>
+                    )}
+            </FavoratesListDiv>
         </span>
     );
 }

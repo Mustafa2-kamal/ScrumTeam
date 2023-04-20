@@ -1,6 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {useDrag} from 'react-dnd';
+import { FaStar } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
+import { useDrag } from 'react-dnd';
+import { addFav, removeFav } from "../utils/favorites";
 
 
 //styling card main
@@ -41,6 +44,24 @@ const CardDetails = styled.div`
    margin-top: 10px;
 `;
 
+const CardTail = styled.div`
+display: flex;
+justify-content: end;
+margin-right: 1rem;
+`;
+
+const StyledIconButton = styled.button`
+background-color: white;
+border: none;
+font-size: 16px;
+color: #ffc400;
+display: none;
+@media screen and (max-width: 889px) {
+   display: block;
+}
+`;
+
+
 //font-weight styling
 const DetailBold = styled.b`
    font-family: 'Nunito Sans', sans-serif;
@@ -48,31 +69,44 @@ const DetailBold = styled.b`
 `;
 
 export default function CountryCard(props) {
-   const [{isDragging}, drag] = useDrag({
+   let starFillFlag = props.favCodes.some((favCountry) => favCountry === props.country.cca2);
+
+   const [{ isDragging }, drag] = useDrag({
       type: 'countryCard',
-      item: {id: props.code},
+      item: { id: props.country.cca2 },
       collect: (monitor) => ({
          isDragging: monitor.isDragging(),
       }),
    });
-   return (
-      <CardContainer ref={drag} style={{opacity: isDragging ? 0.5 : 1}} height={props.cardHeight} width={props.cardWidth}>
-         <CardImage alt={props.countryName} src={props.imgSrc} height={props.imgHeight} />
-         <CardBody>
 
-            <CardTitle>{props.countryName}</CardTitle>
+   const handleClick = (event) => {
+      starFillFlag 
+      ? props.setFavCountries(removeFav(props.favCodes, props.country.cca2))
+      : props.setFavCountries(addFav(props.favCodes, props.country.cca2));
+   };
+   return (
+      <CardContainer ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }} height={props.cardHeight} width={props.cardWidth}>
+         <CardImage alt={props.country.name.common} src={props.country.flags.svg} height={props.imgHeight} />
+         <CardBody>
+            <CardTitle>{props.country.name.common}</CardTitle>
             <CardDetails>
                <span>
-                  <DetailBold>Population: </DetailBold> {props.population.toLocaleString()}<br />
+                  <DetailBold>Population: </DetailBold> {props.country.population.toLocaleString()}<br />
                </span>
                <span>
-                  <DetailBold>Region: </DetailBold>{props.region}<br />
+                  <DetailBold>Region: </DetailBold>{props.country.region}<br />
                </span>
                <span>
-                  <DetailBold>Capital: </DetailBold>{props.capital}
+                  <DetailBold>Capital: </DetailBold>{props.country.capital}
                </span>
             </CardDetails>
          </CardBody>
+         <CardTail>
+            <StyledIconButton onClick={handleClick}>
+               {starFillFlag ? <FaStar/> : <FaRegStar/>}
+            </StyledIconButton>
+            
+         </CardTail>
       </CardContainer>
    );
 
