@@ -1,5 +1,5 @@
 export async function loadCountries(searchTerm) {
-    let url = ((searchTerm === '') || (!searchTerm))
+    let url = ((searchTerm === ' ') || (!searchTerm))
         ? `https://restcountries.com/v3.1/all`
         : `https://restcountries.com/v3.1/name/${searchTerm}`;
     return await fetch(url)

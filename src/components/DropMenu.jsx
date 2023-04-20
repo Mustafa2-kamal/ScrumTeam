@@ -9,7 +9,6 @@ const StyledDropDown = styled.select`
     font-size: 15px;
     box-shadow: 1px 1px 10px 1px #eee;
     font-weight: 300;
-
     option {
         color: black;
         background: white;
@@ -20,7 +19,7 @@ const StyledDropDown = styled.select`
 export default function DropMenu({ options, filterValue, setFilterValue }) {
 
     const handleFilterSelect = e => {
-        setFilterValue(e.value);
+        setFilterValue(e.target.value);
     };
 
 
@@ -30,7 +29,6 @@ export default function DropMenu({ options, filterValue, setFilterValue }) {
                 {
                     options.map((option) => {
                         return <option key={option} value={option}>{option}</option>
-
                     })
                 }
             </StyledDropDown>
