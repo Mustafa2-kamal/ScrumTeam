@@ -1,11 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import {useDrag} from 'react-dnd';
+
 
 //styling card main
 const CardContainer = styled.div`
     border-radius: 4px;
     background-color: white;
     box-shadow: 1px 1px 10px 1px #eee;
+    padding-bottom: 1rem;
 `;
 
 //styling text of card
@@ -45,8 +48,15 @@ const DetailBold = styled.b`
 `;
 
 export default function CountryCard(props) {
+   const [{isDragging}, drag] = useDrag({
+      type: 'countryCard',
+      item: {id: props.code},
+      collect: (monitor) => ({
+         isDragging: monitor.isDragging(),
+      }),
+   });
    return (
-      <CardContainer height={props.cardHeight} width={props.cardWidth}>
+      <CardContainer ref={drag} style={{opacity: isDragging ? 0.5 : 1}} height={props.cardHeight} width={props.cardWidth}>
          <CardImage alt={props.countryName} src={props.imgSrc} height={props.imgHeight} />
          <CardBody>
 

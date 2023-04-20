@@ -2,13 +2,15 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HeaderComponent from './components/HeaderComponent';
 import './App.css';
-
+import {DndProvider} from "react-dnd";
+import {HTML5Backend} from 'react-dnd-html5-backend';
 import HomePage from './pages/home';
 import DetailsPage from './pages/details';
 
 function App() {
   return (
     <React.StrictMode>
+      <DndProvider backend={HTML5Backend}>
       <BrowserRouter basename='/ScrumTeam'>
         <React.Fragment>
           <HeaderComponent />
@@ -19,6 +21,7 @@ function App() {
         </React.Fragment>
 
       </BrowserRouter>
+      </DndProvider>
     </React.StrictMode>
   );
 }

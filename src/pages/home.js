@@ -7,6 +7,8 @@ import FavouritesSection from '../components/FavouritesSection';
 import { loadCountries } from '../utils/Api_Functions';
 import { filterCountries } from '../utils/countries';
 import useDebounce from '../hooks/useDebounceHook';
+import {getFromLocalStorage} from "../utils/localStorage";
+import {FAV_KEY} from "../utils/constants";
 
 const ParentDiv = styled.div`
 height: 100%;
@@ -94,6 +96,7 @@ function HomePage() {
     const [filteredCountries, setFilteredCountries] = useState(countries);
     const [searchValue, setSearchValue] = useState(' ');
     const debouncedSearchTerm = useDebounce(searchValue, 250);
+    const [favCode, setFavCode] = useState(getFromLocalStorage(FAV_KEY) || []);
 
     async function fetchCountries(searchTerm) {
         setCountries(await loadCountries(searchTerm));
@@ -131,7 +134,7 @@ function HomePage() {
             </StyledMainLine>
             <StyledMainBody>
                 <GridContainer>
-                    <FavouritesSection favourites={[]} className={'grid-item-3'} />
+                    <FavouritesSection favCodes={favCode} favourites={[]} setFavCountries={setFavCode} className={'grid-item-3'} />
                     <Countries countries={filteredCountries} className={'ggrid-item-9'} />
                 </GridContainer>
             </StyledMainBody>
