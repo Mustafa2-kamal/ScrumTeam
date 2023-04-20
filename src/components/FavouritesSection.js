@@ -4,16 +4,16 @@ import FavouriteCountry from './FavouriteCountry';
 
 const FavoratesListDiv = styled.div`
 background-color: #ffffff;
-
 display: block;
 @media screen and (max-width: 889px) {
     display: none
 }
-
 height: 100%;
-width: 20vw;
+width: 100%;
+margin-top: 1.5rem;
+margin-left: 0.3rem;
 padding: 20px;
-box-shadow: rgba(0, 0, 0, 0.1) 3px 2px 8px 3px;
+box-shadow: 1px 1px 10px 1px #eee;
 border-radius: 6px;
 border: 0px solid;
 `;
@@ -27,7 +27,8 @@ color: #111517;
 
 export default function FavouritesSection({ favourites }) {
     return (
-        <FavoratesListDiv>
+        <span>
+            <FavoratesListDiv>
             <ListTitle> Favourites </ListTitle>
             {favourites.map
                 (
@@ -37,5 +38,6 @@ export default function FavouritesSection({ favourites }) {
                         </span>
                 )}
         </FavoratesListDiv>
+        </span>
     );
 }
