@@ -18,13 +18,10 @@ const StyledDropDown = styled.select`
     }
 `;
 
-
 export default function DropMenu({ options, filterValue, setFilterValue }) {
-
     const handleFilterSelect = e => {
         setFilterValue(e.target.value);
     };
-
 
     return (
         <div>

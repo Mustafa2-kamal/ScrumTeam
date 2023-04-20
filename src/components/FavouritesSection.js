@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import { useDrop } from "react-dnd";
-
 import FavouriteCountry from './FavouriteCountry';
 import { addFav, removeFav } from "../utils/favorites";
 

@@ -21,7 +21,7 @@ color: #111517;
 font-size: 1.5rem;
 font-weight:800;
 `;
-
+ 
 export default function HeaderComponent() {
   return (
     <Header>

@@ -12,4 +12,4 @@ export let getFromLocalStorage = function (key) {
     } catch {
         return undefined;
     }
-}
+} 

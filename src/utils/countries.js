@@ -12,4 +12,4 @@ export function filterCountries(countries, filter, favCodes) {
                 return country.region === filter;
         }
     }));
-}
+} 

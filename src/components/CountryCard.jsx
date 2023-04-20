@@ -5,7 +5,6 @@ import { FaRegStar } from "react-icons/fa";
 import { useDrag } from 'react-dnd';
 import { addFav, removeFav } from "../utils/favorites";
 
-
 //styling card main
 const CardContainer = styled.div`
     border-radius: 4px;
@@ -61,7 +60,6 @@ display: none;
 }
 `;
 
-
 //font-weight styling
 const DetailBold = styled.b`
    font-family: 'Nunito Sans', sans-serif;
@@ -80,9 +78,9 @@ export default function CountryCard(props) {
    });
 
    const handleClick = (event) => {
-      starFillFlag 
-      ? props.setFavCountries(removeFav(props.favCodes, props.country.cca2))
-      : props.setFavCountries(addFav(props.favCodes, props.country.cca2));
+      starFillFlag
+         ? props.setFavCountries(removeFav(props.favCodes, props.country.cca2))
+         : props.setFavCountries(addFav(props.favCodes, props.country.cca2));
    };
    return (
       <CardContainer ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }} height={props.cardHeight} width={props.cardWidth}>
@@ -103,9 +101,9 @@ export default function CountryCard(props) {
          </CardBody>
          <CardTail>
             <StyledIconButton onClick={handleClick}>
-               {starFillFlag ? <FaStar/> : <FaRegStar/>}
+               {starFillFlag ? <FaStar /> : <FaRegStar />}
             </StyledIconButton>
-            
+
          </CardTail>
       </CardContainer>
    );

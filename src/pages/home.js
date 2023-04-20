@@ -127,7 +127,7 @@ function HomePage() {
     return (
         <ParentDiv>
             <StyledMainLine>
-                <InputField placeholderText='Search for a country ...' searchValue={searchValue}
+                <InputField placeholderText='Search for a country ...'
                     onSearch={
                         (searchTerm) => {
                             setSearchValue(searchTerm);

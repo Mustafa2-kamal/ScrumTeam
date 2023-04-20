@@ -18,7 +18,7 @@ const GridContainer = styled.div`
       width: 50% - 1.5rem;
     }
   }
-
+ 
   @media screen and (max-width: 576px) {
     .grid-item {
       width: 100%;
@@ -29,9 +29,9 @@ const GridContainer = styled.div`
 export default function Countries({ countries, favCodes, setFavCountries }) {
   if (countries.length === 0) {
     return (
-        <GridContainer>
-          <h5 className={'grid-item'}>Result Not Found</h5>
-        </GridContainer>
+      <GridContainer>
+        <h5 className={'grid-item'}>Result Not Found</h5>
+      </GridContainer>
     );
   }
   else return (
@@ -45,7 +45,7 @@ export default function Countries({ countries, favCodes, setFavCountries }) {
               imgHeight={'144px'}
               favCodes={favCodes}
               setFavCountries={setFavCountries}
-              />
+            />
           </div>
         )
         )

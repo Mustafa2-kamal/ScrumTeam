@@ -10,7 +10,7 @@ export async function loadCountries(searchTerm) {
                 case 200:
                     return response.json();
                 default:
-                    return null;
+                    return null; 
             }
         })
         .catch(error => console.log(error))
