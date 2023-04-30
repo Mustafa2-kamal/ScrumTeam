@@ -4,6 +4,7 @@ import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { useDrag } from 'react-dnd';
 import { addFav, removeFav } from "../utils/favorites";
+import { Link } from 'react-router-dom';
 
 //styling card main
 const CardContainer = styled.div`
@@ -60,6 +61,10 @@ display: none;
 }
 `;
 
+const StyledLink = styled(Link)`
+color: inherit;
+text-decoration: none;
+`;
 //font-weight styling
 const DetailBold = styled.b`
    font-family: 'Nunito Sans', sans-serif;
@@ -83,29 +88,31 @@ export default function CountryCard(props) {
          : props.setFavCountries(addFav(props.favCodes, props.country.cca2));
    };
    return (
-      <CardContainer ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }} height={props.cardHeight} width={props.cardWidth}>
-         <CardImage alt={props.country.name.common} src={props.country.flags.svg} height={props.imgHeight} />
-         <CardBody>
-            <CardTitle>{props.country.name.common}</CardTitle>
-            <CardDetails>
-               <span>
-                  <DetailBold>Population: </DetailBold> {props.country.population.toLocaleString()}<br />
-               </span>
-               <span>
-                  <DetailBold>Region: </DetailBold>{props.country.region}<br />
-               </span>
-               <span>
-                  <DetailBold>Capital: </DetailBold>{props.country.capital}
-               </span>
-            </CardDetails>
-         </CardBody>
-         <CardTail>
-            <StyledIconButton onClick={handleClick}>
-               {starFillFlag ? <FaStar /> : <FaRegStar />}
-            </StyledIconButton>
+      <StyledLink to={`/details?countryCode=${props.country.cca2}`}>
+         <CardContainer ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }} height={props.cardHeight} width={props.cardWidth} >
+            <CardImage alt={props.country.name.common} src={props.country.flags.svg} height={props.imgHeight} />
+            <CardBody>
+               <CardTitle>{props.country.name.common}</CardTitle>
+               <CardDetails>
+                  <span>
+                     <DetailBold>Population: </DetailBold> {props.country.population.toLocaleString()}<br />
+                  </span>
+                  <span>
+                     <DetailBold>Region: </DetailBold>{props.country.region}<br />
+                  </span>
+                  <span>
+                     <DetailBold>Capital: </DetailBold>{props.country.capital}
+                  </span>
+               </CardDetails>
+            </CardBody>
+            <CardTail>
+               <StyledIconButton onClick={handleClick}>
+                  {starFillFlag ? <FaStar /> : <FaRegStar />}
+               </StyledIconButton>
 
-         </CardTail>
-      </CardContainer>
+            </CardTail>
+         </CardContainer>
+      </StyledLink>
    );
 
 }

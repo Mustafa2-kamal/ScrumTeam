@@ -10,7 +10,7 @@ export async function loadCountries(searchTerm) {
                 case 200:
                     return response.json();
                 default:
-                    return null; 
+                    return null;
             }
         })
         .catch(error => console.log(error))
@@ -18,3 +18,23 @@ export async function loadCountries(searchTerm) {
             return data;
         });
 }
+
+export async function loadCountryDetails(countryCode) {
+    return await fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`)
+        .then(response => {
+            switch (response.status) {
+                case 404:
+                    return [];
+                case 200:
+                    return response.json();
+                default:
+                    return null;
+            }
+        })
+        .catch(error => console.log(error))
+        .then(data => {
+            return data;
+        });
+}
+
+
