@@ -16,7 +16,7 @@ function App() {
           <HeaderComponent />
           <Routes>
             <Route exact path="/" element={<HomePage />} />
-            <Route path="/details/:countryCode" element={<DetailsPage />} />
+            <Route path="/details" element={<DetailsPage />} />
           </Routes>
         </React.Fragment>
 
