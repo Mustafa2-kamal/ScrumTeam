@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { loadCountryDetails, fetchBorders } from '../utils/Api_Functions';
+import BackButton from '../components/BackButton'
 
 function DetailsPage() {
     const location = useLocation();
@@ -46,6 +47,7 @@ function DetailsPage() {
         return (
             <>
                 <h1>Inside Details Page {countryInfo[0].name.common}</h1>
+                {/* <BackButton text="Back"/> */}
             </>
         );
     }
