@@ -26,7 +26,7 @@ font-size: 20px;
 `;
 
 
-export default function BackButton() {
+export default function BackButton({text}) {
 
 
     return (
@@ -34,7 +34,7 @@ export default function BackButton() {
             <Link to="/">
                 <StyledBackButton >
                     <StyledIcon />
-                    Back
+                    {text}
                 </StyledBackButton>
             </Link>
         </div>
