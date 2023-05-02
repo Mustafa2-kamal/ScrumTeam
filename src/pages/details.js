@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { loadCountryDetails, fetchBorders } from '../utils/Api_Functions';
+import { loadCountryDetails } from '../utils/Api_Functions';
+import CountryText from '../components/CountryText';
 
 function DetailsPage() {
     const location = useLocation();
@@ -45,7 +46,8 @@ function DetailsPage() {
         console.log(borders);
         return (
             <>
-                <h1>Inside Details Page {countryInfo[0].name.common}</h1>
+                <h1>Inside Details Page</h1>
+                <CountryText country={countryInfo[0]} />
             </>
         );
     }
