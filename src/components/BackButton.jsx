@@ -22,12 +22,9 @@ align-items: center;
 const StyledIcon = styled(BsArrowLeft)`
 padding-right: 10px;
 font-size: 20px;
-
 `;
 
-
-export default function BackButton({text}) {
-
+export default function BackButton({ text }) {
 
     return (
         <div>
