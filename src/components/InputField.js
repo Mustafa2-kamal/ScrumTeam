@@ -23,7 +23,7 @@ function InputField({ onSearch, placeholderText }) {
     }
     return (
         <label>
-            <StyledInputField placeholder={placeholderText} type="search" onInput={handleChange}/>
+            <StyledInputField placeholder={placeholderText} type="search" onInput={handleChange} />
         </label>
     );
 }

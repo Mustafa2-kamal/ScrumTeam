@@ -100,7 +100,7 @@ function HomePage() {
     const [allCountries, setAllCountries] = useState([]);
 
     async function fetchCountries(searchTerm) {
-        if(allCountries.length === 0){
+        if (allCountries.length === 0) {
             setAllCountries(await loadCountries(searchTerm));
         }
         setCountries(await loadCountries(searchTerm));
@@ -142,7 +142,7 @@ function HomePage() {
             </StyledMainLine>
             <StyledMainBody>
                 <GridContainer>
-                    <FavouritesSection countries= {allCountries} favCodes={favCode} setFavCountries={setFavCode} className={'grid-item-3'} />
+                    <FavouritesSection countries={allCountries} favCodes={favCode} setFavCountries={setFavCode} className={'grid-item-3'} />
                     <Countries countries={filteredCountries} favCodes={favCode} setFavCountries={setFavCode} className={'grid-item-9'} />
                 </GridContainer>
             </StyledMainBody>

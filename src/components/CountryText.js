@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const CountryName = styled.h2`
     font-size: 1.8rem;
     font-weight: 800;
+    margin-top: 20px;
+    margin-bottom: 15px;
 `;
 
 const CountryInfo = styled.h2`
@@ -15,14 +17,14 @@ const CountryInfo = styled.h2`
     margin-left: 0;
     padding: 0;
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
         display: block;
     }
 `;
 
 const CountryInfoCol = styled.div`
     
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
         display: block;
         margin-bottom: 2rem;
     }
@@ -31,7 +33,7 @@ const CountryInfoCol = styled.div`
 const CountryInfoColWithMargin = styled.div`
     margin-right: 8rem;
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
         display: block;
         margin-bottom: 2rem;
         margin-right: 0;

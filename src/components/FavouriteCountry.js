@@ -44,7 +44,7 @@ const CancelButton = styled("button")`
   font-weight: 800;
 `;
 export default function FavouriteCountry({ countries, countryCode, removeFavCountry }) {
- 
+
     const favCountry = countries.find(country => country.cca2 === countryCode);
     const handleRemoveFavorite = (event) => {
         removeFavCountry(countryCode);
