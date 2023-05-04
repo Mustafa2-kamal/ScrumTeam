@@ -10,11 +10,15 @@
   --theme-bg-color: #fafafa;
   --theme-font-color: #111517;
   --theme-bg-elements: white;
+  box-shadow: 0 0.125rem 0.25rem rgba(33,37,41,0.075);
+
   background-color: var(--theme-bg-color);
   color: var(--theme-font-color);
 }
 .dark{
-  --theme-bg-color: #202c37;
+
+  box-shadow: 0 0.125rem 0.25rem rgba(17,18,45,0.02);
+  --theme-bg-color: #2b3945;
   --theme-font-color: white;
   --theme-bg-elements: #2b3945;
   background-color: var(--theme-bg-color);

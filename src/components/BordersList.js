@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import {useContext} from "react";
+import {DarkModeContext} from "../App";
 
 const BorderCountry = styled('span')`
   padding: 0.5rem 1rem;
@@ -7,7 +9,6 @@ const BorderCountry = styled('span')`
   border-radius: 0.3rem;
   margin: 0 10px 10px;
   height: max-content;
-  background-color: white;
 `;
 const SmallLight = styled("span")`
   font-weight: 300;
@@ -26,12 +27,14 @@ const FlexBox = styled("span")`
   flex-wrap: wrap;
 `;
 export function Borders({ borders }) {
+  const { darkMode} = useContext(DarkModeContext);
+
 
   return <FlexBox>
     <CountryFeature >Border Countries:</CountryFeature>
     {
       borders.map((border) => (
-        <BorderCountry key={border[0].cca3}>
+        <BorderCountry className={darkMode?'dark':'light'} key={border[0].cca3}>
           <SmallLight>{border[0].name.common}</SmallLight></BorderCountry>
 
 

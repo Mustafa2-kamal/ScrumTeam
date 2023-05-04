@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import {DarkModeContext} from "../App";
 
 const CountryName = styled.h2`
     font-size: 1.8rem;
@@ -12,7 +13,6 @@ const CountryInfo = styled.h2`
     display: flex;
     font-weight: 600;
     font-size: 0.8rem;
-    color: #111517; 
     text-align: left;
     margin-left: 0;
     padding: 0;
@@ -70,6 +70,7 @@ function CountryText({ country }) {
         countryCurrencies = splitBetweenElements(countryCurrencies);
         return countryCurrencies;
     }
+
 
     return (
         <>

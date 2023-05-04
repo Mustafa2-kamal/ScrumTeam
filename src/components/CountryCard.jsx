@@ -5,12 +5,12 @@ import { FaRegStar } from "react-icons/fa";
 import { useDrag } from 'react-dnd';
 import { addFav, removeFav } from "../utils/favorites";
 import { Link } from 'react-router-dom';
+import {useContext} from "react";
+import {DarkModeContext} from "../App";
 
 //styling card main
 const CardContainer = styled.div`
     border-radius: 4px;
-    background-color: white;
-    box-shadow: 1px 1px 10px 1px #eee;
     padding-bottom: 1rem;
 `;
 
@@ -51,10 +51,8 @@ margin-right: 1rem;
 `;
 
 const StyledIconButton = styled.button`
-background-color: white;
 border: none;
 font-size: 16px;
-color: #ffc400;
 display: none;
 @media screen and (max-width: 889px) {
    display: block;
@@ -81,7 +79,7 @@ export default function CountryCard(props) {
          isDragging: monitor.isDragging(),
       }),
    });
-
+   const { darkMode } = useContext(DarkModeContext);
    const handleClick = (event) => {
       starFillFlag
          ? props.setFavCountries(removeFav(props.favCodes, props.country.cca2))
@@ -89,7 +87,7 @@ export default function CountryCard(props) {
    };
    return (
       <StyledLink to={`/details?countryCode=${props.country.cca2}`}>
-         <CardContainer ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }} height={props.cardHeight} width={props.cardWidth} >
+         <CardContainer className={darkMode?'dark':'light'}  ref={drag} style={{ opacity: isDragging ? 0.5 : 1 }} height={props.cardHeight} width={props.cardWidth} >
             <CardImage alt={props.country.name.common} src={props.country.flags.svg} height={props.imgHeight} />
             <CardBody>
                <CardTitle>{props.country.name.common}</CardTitle>

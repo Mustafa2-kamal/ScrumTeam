@@ -88,6 +88,9 @@ function DetailsPage() {
                         </div>
                     </StyledMainLine>
                 </ParentDiv>
+                <div style={{height:'20vh'}}>
+
+                </div>
             </>
         );
     }
