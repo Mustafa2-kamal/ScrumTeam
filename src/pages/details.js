@@ -7,11 +7,8 @@ import BackButton from '../components/BackButton';
 import { Borders } from '../components/BordersList';
 
 const ParentDiv = styled.div`
-height: 100%;
-margin-left: 4.5rem;
-margin-right: 4.5rem;
-margin-bottom: 15px;
-margin-top: 50px;
+  height: 100%;
+  margin: 50px 4.5rem 15px;
 `;
 
 const StyledMainLine = styled.div`
