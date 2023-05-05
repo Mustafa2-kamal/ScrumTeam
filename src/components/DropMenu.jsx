@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components';
+import {DarkModeContext} from "../App";
 
 const StyledDropDown = styled.select`
     width: 100%;
@@ -10,22 +11,20 @@ const StyledDropDown = styled.select`
     border: none;
     border-radius: 5px;
     font-size: 15px;
-    box-shadow: 1px 1px 10px 1px #eee;
     font-weight: 300;
-    option {
-        color: black;
-        background: white;
-    }
+    
 `;
 
 export default function DropMenu({ options, filterValue, setFilterValue }) {
     const handleFilterSelect = e => {
         setFilterValue(e.target.value);
     };
+    const { darkMode} = useContext(DarkModeContext);
+
 
     return (
         <div>
-            <StyledDropDown onChange={handleFilterSelect} value={filterValue}>
+            <StyledDropDown  className={darkMode?'dark':'light'} onChange={handleFilterSelect} value={filterValue}>
                 {
                     options.map((option) => {
                         return <option key={option} value={option}>{option}</option>

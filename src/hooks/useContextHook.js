@@ -1,10 +1,10 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 
 function useContextHook(value) {
     const [themeValue, setThemeValue] = useState('light');
 
     useEffect(() => {
-        setThemeValue(useContext(value));
+        setThemeValue(value);
     }, value);
 
     return themeValue;

@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import ThemeButton from "./ThemeButton";
 import styled from "styled-components";
+import {DarkModeContext} from "../App";
 
 const Header = styled.div`
 margin-top: 0;
-background-color: #ffffff;
 height: 32px;
 padding-top: 16px;
 padding-bottom: 16px;
@@ -17,16 +17,17 @@ justify-content: space-between;
 
 const HeaderText = styled.h1`
 margin:0px;
-color: #111517;
 font-size: 1.5rem;
 font-weight:800;
 `;
 
 export default function HeaderComponent() {
+    const { darkMode ,toggleTheme } = useContext(DarkModeContext);
+    console.log(toggleTheme);
   return (
-    <Header>
+    <Header className={darkMode?'dark':'light'}>
       <HeaderText>Where in the world?</HeaderText>
-      <ThemeButton />
+      <ThemeButton handleChangeMode={toggleTheme}/>
     </Header>
   );
 }

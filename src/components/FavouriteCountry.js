@@ -1,5 +1,7 @@
 import * as React from 'react';
 import styled from "styled-components";
+import {useContext} from "react";
+import {DarkModeContext} from "../App";
 
 const HorizontialCard = styled.div`
 flex-direction: row;
@@ -7,31 +9,31 @@ padding-top: 10px;
 width: 100%;
 display: flex;
 justify-content: space-between;
+  box-shadow: none;
 `;
 
 const CardBody = styled.div`
 display: flex;
 flex-direction: row;
 align-items: center;
+ 
 `;
 
 const CardImage = styled.img`
-width: 5vw;
+
 height: 25px;
 border-radius: 7px;
 object-fit: cover;
-margin-right: 5px;
+margin-right: 10px;
 `;
 
 const CardTitle = styled.h5`
 display: inline;
 font-weight: bold;
-color: #111517;
 `;
 
 const CancelButton = styled("button")`
-  background-color: "white";
-  color: "black";
+ 
   width: 19px;
   height: 19px;
   border: none;
@@ -49,14 +51,16 @@ export default function FavouriteCountry({ countries, countryCode, removeFavCoun
     const handleRemoveFavorite = (event) => {
         removeFavCountry(countryCode);
     };
+    const { darkMode} = useContext(DarkModeContext);
+
     if (favCountry) {
         return (
-            <HorizontialCard>
+            <HorizontialCard  className={darkMode?'dark':'light'}>
                 <CardBody>
                     <CardImage src={favCountry.flags.svg} />
                     <CardTitle>{favCountry.name.common}</CardTitle>
                 </CardBody>
-                <CancelButton onClick={() => handleRemoveFavorite()}>x</CancelButton>
+                <CancelButton style={{backgroundColor: darkMode ? '#202c37' : '#fafafa', color : darkMode ? 'white' : '#111517'}} onClick={() => handleRemoveFavorite()}>x</CancelButton>
             </HorizontialCard>
         );
     }
