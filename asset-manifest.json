@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ScrumTeam/static/css/main.f2f16afb.css",
-    "main.js": "/ScrumTeam/static/js/main.a6d684b0.js",
+    "main.css": "/ScrumTeam/static/css/main.6954160d.css",
+    "main.js": "/ScrumTeam/static/js/main.d1edd13a.js",
     "static/js/787.c18691a2.chunk.js": "/ScrumTeam/static/js/787.c18691a2.chunk.js",
     "index.html": "/ScrumTeam/index.html",
-    "main.f2f16afb.css.map": "/ScrumTeam/static/css/main.f2f16afb.css.map",
-    "main.a6d684b0.js.map": "/ScrumTeam/static/js/main.a6d684b0.js.map",
+    "main.6954160d.css.map": "/ScrumTeam/static/css/main.6954160d.css.map",
+    "main.d1edd13a.js.map": "/ScrumTeam/static/js/main.d1edd13a.js.map",
     "787.c18691a2.chunk.js.map": "/ScrumTeam/static/js/787.c18691a2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2f16afb.css",
-    "static/js/main.a6d684b0.js"
+    "static/css/main.6954160d.css",
+    "static/js/main.d1edd13a.js"
   ]
 }
